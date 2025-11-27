@@ -403,7 +403,7 @@ function initLoginPage() {
     });
 }
 
-// ------------------ REGISTER PAGE ------------------
+// ------------------ REGISTER PAGE (UPDATED VALIDATION) ------------------
 function initRegisterPage() {
     const form = document.getElementById("registerForm");
     const msg = document.getElementById("registerMessage");
@@ -415,38 +415,74 @@ function initRegisterPage() {
         const fullName       = document.getElementById("fullName").value.trim();
         const dob            = document.getElementById("dob").value.trim();
         const email          = document.getElementById("regEmail").value.trim();
+        const trn            = document.getElementById("regTRN").value.trim();   // <--- TRN FIELD
         const username       = document.getElementById("regUsername").value.trim();
         const password       = document.getElementById("regPassword").value;
         const confirmPassword= document.getElementById("regConfirm").value;
 
-        if (!fullName || !dob || !email || !username || !password || !confirmPassword) {
+        // ---------------------- REQUIRED FIELD CHECK ----------------------
+        if (!fullName || !dob || !email || !trn || !username || !password || !confirmPassword) {
             msg.className = "message error";
             msg.textContent = "Please complete all fields.";
             return;
         }
 
+        // ---------------------- AGE VALIDATION (18+) ----------------------
+        const birthYear = new Date(dob).getFullYear();
+        const currentYear = new Date().getFullYear();
+        const age = currentYear - birthYear;
+
+        if (age < 18) {
+            msg.className = "message error";
+            msg.textContent = "You must be at least 18 years old to register.";
+            return;
+        }
+
+        // ---------------------- TRN VALIDATION ----------------------
+        if (!/^[0-9]{9}$/.test(trn)) {
+            msg.className = "message error";
+            msg.textContent = "TRN must be exactly 9 digits.";
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        const trnExists = users.some(u => u.trn === trn);
+        if (trnExists) {
+            msg.className = "message error";
+            msg.textContent = "This TRN is already registered.";
+            return;
+        }
+
+        // ---------------------- PASSWORD LENGTH CHECK ----------------------
+        if (password.length < 8) {
+            msg.className = "message error";
+            msg.textContent = "Password must be at least 8 characters long.";
+            return;
+        }
+
+        // ---------------------- PASSWORD MATCH CHECK ----------------------
         if (password !== confirmPassword) {
             msg.className = "message error";
             msg.textContent = "Passwords do not match.";
             return;
         }
 
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+        // ---------------------- USERNAME UNIQUE CHECK ----------------------
         const exists = users.some(u => u.username === username);
-
         if (exists) {
             msg.className = "message error";
             msg.textContent = "That username is already taken. Please choose another.";
             return;
         }
 
-        const newUser = { fullName, dob, email, username, password };
+        // ---------------------- SAVE USER ----------------------
+        const newUser = { fullName, dob, trn, email, username, password };
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
 
         msg.className = "message success";
         msg.textContent = "Registration successful! Redirecting to login...";
-
         form.reset();
 
         setTimeout(() => {
