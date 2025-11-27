@@ -2,70 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sneaker Spot - Home</title>
-
-    <!-- Correct CSS file name + same folder -->
-   <link rel="stylesheet" href="../style.css">
-    <!-- JS file in same folder -->
+    <title>BookVerse – Login</title>
+    <link rel="stylesheet" href="../style.css">
     <script src="script.js" defer></script>
 </head>
-<body data-page="home">
+
+<body data-page="login">
+
 <header class="main-header">
     <div class="logo">
-        <span class="logo-mark">SS</span>
-        <span class="logo-text">Sneaker <span>Spot</span></span>
+        <span class="logo-circle">BV</span>
+        <span class="logo-text">Book<span>Verse</span></span>
     </div>
-    <nav class="main-nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="cart.html">Cart</a>
-        <a href="checkout.html">Checkout</a>
-        <a href="about.html">About Us</a>
-        <span id="userStatus"></span>
 
+    <nav class="main-nav">
+        <a href="index.html" class="active">Login</a>
+        <a href="register.html">Register</a>
+        <a href="product.html">Books</a>
+        <a href="cart.html">Cart</a>
+        <a href="about.html">About</a>
     </nav>
 </header>
 
-<!-- vertical ribbon accent -->
 <div class="side-ribbon"></div>
 
 <main>
-    <!-- Hero section -->
-    <section class="hero">
-        <h1>Custom Kicks. Limited Drops.</h1>
-        <p>Anime collabs, Sweetheart Jordans and exclusive client editions – only at Sneaker Spot.</p>
-        <button class="hero-btn" onclick="window.location.href='cart.html'">
-            View Cart
-        </button>
-    </section>
-
-    <!-- Products -->
     <section class="container">
-        <h2 class="section-title">Sneaker Collection</h2>
-        <p class="section-subtitle">Hand-picked limited editions and custom kicks.</p>
-        <input type="text" id="searchBox" placeholder="Search sneakers..." class="search-box">
-        <div id="productsContainer" class="products-grid">
-            <!-- Cards are injected by script.js -->
-        </div>
+        <h2>Login</h2>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginTrn">Tax Registration Number (TRN)</label>
+                <input type="text" id="loginTrn" required placeholder="000-000-000">
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+
+            <div id="loginMessage" class="message"></div>
+
+            <button type="submit">Login</button>
+            <button type="reset" class="secondary">Cancel</button>
+
+            <p style="margin-top:14px;"><a href="reset.html">Reset Password</a></p>
+        </form>
     </section>
 </main>
 
-<!-- PRODUCT DETAIL SLIDE-IN PANEL -->
-<div id="productPanel" class="product-panel">
-    <div class="panel-content">
-        <span id="panelClose" class="close-btn">×</span>
-        <img id="panelImage" src="" alt="Product">
-        <h2 id="panelName"></h2>
-        <p id="panelPrice"></p>
-        <p id="panelDesc"></p>
-        <button id="panelAddBtn">Add to Cart</button>
-    </div>
-</div>
-
-
 <footer class="main-footer">
-    <p>&copy; 2025 Sneaker Spot. All rights reserved.</p>
+    <p>&copy; 2025 BookVerse – Digital Bookstore</p>
 </footer>
+
 </body>
 </html>
