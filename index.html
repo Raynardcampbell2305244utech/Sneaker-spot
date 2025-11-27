@@ -21,6 +21,7 @@
         <a href="product.html">Books</a>
         <a href="cart.html">Cart</a>
         <a href="about.html">About</a>
+        <span id="userStatus"></span>
     </nav>
 </header>
 
@@ -32,8 +33,8 @@
 
         <form id="loginForm">
             <div class="form-group">
-                <label for="loginTrn">Tax Registration Number (TRN)</label>
-                <input type="text" id="loginTrn" required placeholder="000-000-000">
+                <label for="loginUsername">TRN</label>
+                <input type="text" id="loginUsername" placeholder="000-000-000" required>
             </div>
 
             <div class="form-group">
@@ -44,9 +45,9 @@
             <div id="loginMessage" class="message"></div>
 
             <button type="submit">Login</button>
-            <button type="reset" class="secondary">Cancel</button>
+            <button type="reset" class="secondary">Clear</button>
 
-            <p style="margin-top:14px;"><a href="reset.html">Reset Password</a></p>
+            <p><a href="reset.html">Reset Password</a></p>
         </form>
     </section>
 </main>
