@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sneaker Spot - Register</title>
+    <link rel="stylesheet" href="../style.css">
+    <!--load the JS file -->
+    <script src="script.js" defer></script>
+</head>
+
+<body data-page="register">
+
+<header class="main-header">
+    <div class="logo">
+        <span class="logo-mark">SS</span>
+        <span class="logo-text">Sneaker <span>Spot</span></span>
+    </div>
+    <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="active">Register</a>
+        <a href="cart.html">Cart</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="about.html">About Us</a>
+
+        <span id="userStatus"></span>
+
+    </nav>
+</header>
+
+<div class="side-ribbon"></div>
+
+<main>
+    <section class="container">
+        <h2>Registration</h2>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label for="regEmail">Email Address</label>
+                <input type="email" id="regEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" required>
+            </div>
+
+            <div class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" required>
+            </div>
+
+            <div class="form-group">
+                <label for="regConfirm">Confirm Password</label>
+                <input type="password" id="regConfirm" required>
+            </div>
+
+            <div id="registerMessage" class="message"></div>
+
+            <button type="submit">Register</button>
+            <button class="secondary" type="reset">Clear</button>
+        </form>
+
+    </section>
+</main>
+
+<footer class="main-footer">
+    <p>&copy; 2025 Sneaker Spot. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

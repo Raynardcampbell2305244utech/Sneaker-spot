@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sneaker Spot - Home</title>
+
+    <!-- Correct CSS file name + same folder -->
+   <link rel="stylesheet" href="../style.css">
+    <!-- JS file in same folder -->
+    <script src="script.js" defer></script>
+</head>
+<body data-page="home">
+<header class="main-header">
+    <div class="logo">
+        <span class="logo-mark">SS</span>
+        <span class="logo-text">Sneaker <span>Spot</span></span>
+    </div>
+    <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="cart.html">Cart</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="about.html">About Us</a>
+        <span id="userStatus"></span>
+
+    </nav>
+</header>
+
+<!-- vertical ribbon accent -->
+<div class="side-ribbon"></div>
+
+<main>
+    <!-- Hero section -->
+    <section class="hero">
+        <h1>Custom Kicks. Limited Drops.</h1>
+        <p>Anime collabs, Sweetheart Jordans and exclusive client editions – only at Sneaker Spot.</p>
+        <button class="hero-btn" onclick="window.location.href='cart.html'">
+            View Cart
+        </button>
+    </section>
+
+    <!-- Products -->
+    <section class="container">
+        <h2 class="section-title">Sneaker Collection</h2>
+        <p class="section-subtitle">Hand-picked limited editions and custom kicks.</p>
+        <input type="text" id="searchBox" placeholder="Search sneakers..." class="search-box">
+        <div id="productsContainer" class="products-grid">
+            <!-- Cards are injected by script.js -->
+        </div>
+    </section>
+</main>
+
+<!-- PRODUCT DETAIL SLIDE-IN PANEL -->
+<div id="productPanel" class="product-panel">
+    <div class="panel-content">
+        <span id="panelClose" class="close-btn">×</span>
+        <img id="panelImage" src="" alt="Product">
+        <h2 id="panelName"></h2>
+        <p id="panelPrice"></p>
+        <p id="panelDesc"></p>
+        <button id="panelAddBtn">Add to Cart</button>
+    </div>
+</div>
+
+
+<footer class="main-footer">
+    <p>&copy; 2025 Sneaker Spot. All rights reserved.</p>
+</footer>
+</body>
+</html>
