@@ -16,7 +16,6 @@ const PRODUCTS = [
     { id: 6,  name: "Naruto Ones – Pirate King Edition",           price: 500, image: "../Assets/one piece jordons.png" },
     { id: 7,  name: "One Force – One Force Edition",               price: 480, image: "../Assets/one force.png" },
     { id: 8,  name: "Solo Levelers – Solo Leveling Edition",       price: 520, image: "../Assets/solo levelers.png" },
-
     { id: 9,  name: "Itachi Jordan 4 – Mangekyou Edition",         price: 600, image: "../Assets/Itachi J 4's.png" },
     { id: 10, name: "Solo Levelers Jordan 4 – Shadow Squad",       price: 640, image: "../Assets/solo levelers 4.png" },
     { id: 11, name: "Shisui Jordan 4 – Green Ember Edition",       price: 590, image: "../Assets/Shunsui J 4's.png" },
@@ -561,4 +560,5 @@ document.addEventListener("DOMContentLoaded", () => {
         statusBox.innerHTML = "";
     }
 });
+
 
