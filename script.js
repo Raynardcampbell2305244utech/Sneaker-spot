@@ -367,10 +367,14 @@ function initInvoicePage() {
 }
 
 // ------------------ LOGIN PAGE ------------------
+
 function initLoginPage() {
     const form = document.getElementById("loginForm");
     const msg = document.getElementById("loginMessage");
     if (!form) return;
+
+    const lockoutData = JSON.parse(localStorage.getItem("loginLockout")) || {};
+    const currentTime = new Date().getTime();
 
     form.addEventListener("submit", e => {
         e.preventDefault();
@@ -384,13 +388,56 @@ function initLoginPage() {
             return;
         }
 
+        // Check if account is locked
+        if (lockoutData[username] && lockoutData[username].locked) {
+            const lockTime = lockoutData[username].lockTime;
+            const timeElapsed = currentTime - lockTime;
+            const lockDuration = 15 * 60 * 1000; // 15 minutes
+
+            if (timeElapsed < lockDuration) {
+                const remainingMinutes = Math.ceil((lockDuration - timeElapsed) / 60000);
+                msg.className = "message error";
+                msg.textContent = `Account locked. Try again in ${remainingMinutes} minutes.`;
+                return;
+            } else {
+                // Reset lockout after time passed
+                delete lockoutData[username];
+                localStorage.setItem("loginLockout", JSON.stringify(lockoutData));
+            }
+        }
+
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const user = users.find(u => u.username === username && u.password === password);
 
         if (!user) {
+            // Track failed attempts
+            if (!lockoutData[username]) {
+                lockoutData[username] = { attempts: 0, locked: false };
+            }
+
+            lockoutData[username].attempts += 1;
+            const attemptsLeft = 3 - lockoutData[username].attempts;
+
+            if (lockoutData[username].attempts >= 3) {
+                lockoutData[username].locked = true;
+                lockoutData[username].lockTime = currentTime;
+                localStorage.setItem("loginLockout", JSON.stringify(lockoutData));
+
+                msg.className = "message error";
+                msg.textContent = "Account locked due to 3 failed attempts. Please wait 15 minutes.";
+                return;
+            }
+
+            localStorage.setItem("loginLockout", JSON.stringify(lockoutData));
             msg.className = "message error";
-            msg.textContent = "Invalid username or password.";
+            msg.textContent = `Invalid username or password. ${attemptsLeft} attempt(s) remaining.`;
             return;
+        }
+
+        // Successful login - reset attempts
+        if (lockoutData[username]) {
+            delete lockoutData[username];
+            localStorage.setItem("loginLockout", JSON.stringify(lockoutData));
         }
 
         localStorage.setItem("currentUser", JSON.stringify(user));
@@ -402,7 +449,6 @@ function initLoginPage() {
         }, 1000);
     });
 }
-
 // ------------------ REGISTER PAGE (UPDATED VALIDATION) ------------------
 function initRegisterPage() {
     const form = document.getElementById("registerForm");
@@ -515,3 +561,4 @@ document.addEventListener("DOMContentLoaded", () => {
         statusBox.innerHTML = "";
     }
 });
+
