@@ -8,22 +8,22 @@ const DISCOUNT_RATE = 0.10;     // 10% discount
 // ------------------ PRODUCTS (16 SNEAKERS) ------------------
 // Paths are from Codes/script.js → ../Assets/...
 const PRODUCTS = [
-    { id: 1,  name: "Earth Force – Planet Terra Edition",          price: 210, image: "../Assets/earth force.png" },
-    { id: 2,  name: "Force – Furious Drift Edition",               price: 230, image: "../Assets/force.png" },
-    { id: 3,  name: "Lacy's one – Rose Glow Edition",              price: 350, image: "../Assets/lacy's one.png" },
-    { id: 4,  name: "Lacy twos – Midnight Starlight Edition",      price: 300, image: "../Assets/lacy twos.png" },
-    { id: 5,  name: "Special Edition Lacy's – Black & White Chic", price: 215, image: "../Assets/special edition lacy's.png" },
-    { id: 6,  name: "Naruto Ones – Pirate King Edition",           price: 500, image: "../Assets/one piece jordons.png" },
-    { id: 7,  name: "One Force – One Force Edition",               price: 480, image: "../Assets/one force.png" },
-    { id: 8,  name: "Solo Levelers – Solo Leveling Edition",       price: 520, image: "../Assets/solo levelers.png" },
-    { id: 9,  name: "Itachi Jordan 4 – Mangekyou Edition",         price: 600, image: "../Assets/Itachi J 4's.png" },
-    { id: 10, name: "Solo Levelers Jordan 4 – Shadow Squad",       price: 640, image: "../Assets/solo levelers 4.png" },
-    { id: 11, name: "Shisui Jordan 4 – Green Ember Edition",       price: 590, image: "../Assets/Shunsui J 4's.png" },
-    { id: 12, name: "Stewie & Brian Jordan 3 – Comedy Duo",        price: 450, image: "../Assets/stew&bri J 3's.png" },
-    { id: 13, name: "Peter Griffin Dunk Low – Quahog Edition",     price: 420, image: "../Assets/peters.png" },
-    { id: 14, name: "Gear 5 Luffy – Blazer Mid Edition",           price: 550, image: "../Assets/luffy blazer mids.png" },
-    { id: 15, name: "World Cup Messi Jordan 4 – GOAT Edition",     price: 620, image: "../Assets/World's messi J 4's.png" },
-    { id: 16, name: "Saruto Forces – Lightning Edition",           price: 480, image: "../Assets/saruto forces.png" }
+    { id: 1,  name: "Maze Runner - James Dashner",          price: 210, image: "../Assets/maze runner.jpg" },
+    { id: 2,  name: "All Systems Red - Martha Wells",               price: 230, image: "../Assets/all systems red.jpg" },
+    { id: 3,  name: "The Love Hypothesis - Ali Hazelwood",              price: 350, image: "../Assets/love hypothesis.jpg" },
+    { id: 4,  name: "Fourth Wing - Rebecca Yarros",      price: 300, image: "../Assets/fourth wing.jpg" },
+    { id: 5,  name: "Star Wars: Heir to the Empire - Timothy Zahn", price: 215, image: "../Assets/star wars.jpeg" },
+    { id: 6,  name: "Surviving to Drive - Guenther Steiner",           price: 500, image: "../Assets/f1 drive.jpg" },
+    { id: 7,  name: "The Sun is also a Star - Nicola Yoon",               price: 480, image: "../Assets/sun is also.jpeg" },
+    { id: 8,  name: "Lord of the Flies - William Golding",       price: 520, image: "../Assets/lord of the flies.jpeg" },
+    { id: 9,  name: "Hunger Games - Suzanne Collins",         price: 600, image: "../Assets/hunger games.jpg" },
+    { id: 10, name: "The Fault in Our Stars - John Green",       price: 640, image: "../Assets/fault in.jpg" },
+    { id: 11, name: "Scythe - Neal Shusterman",       price: 590, image: "../Assets/scythe.jpg" },
+    { id: 12, name: "You Should See Me in Crown - Leah Johnson",        price: 450, image: "../Assets/you should.jpg" },
+    { id: 13, name: "Red Queen - Victoria Aveyard",     price: 420, image: "../Assets/red queen.jpg" },
+    { id: 14, name: "The Lightening Theif - Rick Riordan",           price: 550, image: "../Assets/percy jackson.jpg" },
+    { id: 15, name: "Bride - Ali Hazelwood",     price: 620, image: "../Assets/World's messi J 4's.png" },
+    { id: 16, name: "Love on the Brain - Ali Hazelwood",           price: 480, image: "../Assets/love on brain.jpg" }
 ];
 
 // ------------------ CART HELPERS ------------------
@@ -105,7 +105,7 @@ function initHomePage() {
                 <img src="${product.image}" alt="${product.name}" data-view="${product.id}">
                 <h3>${product.name}</h3>
                 <p class="price">${formatCurrency(product.price)}</p>
-                <p class="desc">Limited edition sneaker with premium materials and unique detailing.</p>
+                <p class="desc">A riveting read leaving you wanting more.</p>
                 <button type="button" data-id="${product.id}">Add to Cart</button>
             `;
             container.appendChild(card);
@@ -143,7 +143,7 @@ function initHomePage() {
             panelImage.src = product.image;
             panelName.textContent = product.name;
             panelPrice.textContent = formatCurrency(product.price);
-            panelDesc.textContent = "Premium limited edition sneaker with custom artwork.";
+            panelDesc.textContent = "Top-tier books with the best reviews";
             panelAddBtn.setAttribute("data-id", id);
 
             panel.classList.add("open");
@@ -560,5 +560,6 @@ document.addEventListener("DOMContentLoaded", () => {
         statusBox.innerHTML = "";
     }
 });
+
 
 
